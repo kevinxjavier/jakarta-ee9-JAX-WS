@@ -121,7 +121,7 @@
                     </interface>
                 </interfaces>
             
-            <!-- // With this: -->
+            <!-- // With this: -->   
                 <interfaces>         
                     <interface name="management">
                         <any-address/>
@@ -196,7 +196,6 @@
             <!-- // With this: -->
                 <wsdl-host>kevin.cx</wsdl-host>
 
-
 # To watch logs WILDFLY
     $ tail -100f $WILDFLY_HOME/standalone/log/server.log
 ```
@@ -234,11 +233,6 @@ $ curl http://127.0.0.1:9990
         # Runtime   >   Server (Choose it)  >   Monitor >   Webservices >   Endpoint >   (MyWebService) >   WSDL URL
 ```
 
-# GENERATE WSDL SOURCE
-```
-$ mvn generate-sources
-```
-
 # START WILDFlY FROM MAVEN & DEPLOY
 ```
 $ mvn wildfly:start  # Only start Wildfly does not deploy our war.
@@ -267,7 +261,7 @@ $ mvn dependency:purge-local-repository clean install
 	
 	$ curl http://kevin.cx:8081/jakarta-ee9-jaxws/CourseServiceWSImpl?wsdl
 
-	$ # Calling inform() method
+	# Calling inform() method
     $ curl --location 'http://kevin.cx:8081/jakarta-ee9-jaxws/CourseServiceWSImpl?wsdl=null' \
 --header 'Content-Type: application/xml' \
 --data '<?xml version='\''1.0'\'' encoding='\''UTF-8'\''?>
@@ -290,14 +284,17 @@ $ mvn dependency:purge-local-repository clean install
 </S:Envelope>'
 
     # Calling create() method
-	$ curl --location 'http://kevin.cx:8081/jakarta-ee9-jaxws/CourseServiceWSImpl?wsdl=null' \
+	$ curl --location 'http://kevin.cx:8081/jakarta-ee9-jaxws/CourseServiceWSImpl?wsdl' \
 --header 'Content-Type: application/xml' \
 --data '<?xml version='\''1.0'\'' encoding='\''UTF-8'\''?>
 <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
     <S:Body>
         <ns2:create xmlns:ns2="http://services.kevinpina.com/">
             <arg0>
-                <name>ReacNative</name>
+                <name>Java</name>
+                <instructor>Kevin Pina</instructor>
+                <description>Essentials</description>
+                <duration>1</duration>
             </arg0>
         </ns2:create>
     </S:Body>

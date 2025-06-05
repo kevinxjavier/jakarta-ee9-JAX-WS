@@ -260,6 +260,42 @@ $ mvn dependency:purge-local-repository clean install
 	$ curl http://localhost:9990/console/
 	
 	$ curl http://kevin.cx:8081/jakarta-ee9-jaxws/CourseServiceWSImpl?wsdl
+	
+	# Calling inform() method
+    $ curl --location 'http://kevin.cx:8081/jakarta-ee9-jaxws/CourseServiceWSImpl?wsdl=null' \
+--header 'Content-Type: application/xml' \
+--data '<?xml version='\''1.0'\'' encoding='\''UTF-8'\''?>
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+    <S:Body>
+        <ns2:inform xmlns:ns2="http://services.kevinpina.com/">
+            <arg0>Hola Mundo</arg0>
+        </ns2:inform>
+    </S:Body>
+</S:Envelope>'
+
+    # Calling list() method
+    $ curl --location 'http://kevin.cx:8081/jakarta-ee9-jaxws/CourseServiceWSImpl?wsdl=null' \
+--header 'Content-Type: application/xml' \
+--data '<?xml version='\''1.0'\'' encoding='\''UTF-8'\''?>
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+    <S:Body>
+        <ns2:list xmlns:ns2="http://services.kevinpina.com/"/>
+    </S:Body>
+</S:Envelope>'
+
+    # Calling create() method
+	$ curl --location 'http://kevin.cx:8081/jakarta-ee9-jaxws/CourseServiceWSImpl?wsdl=null' \
+--header 'Content-Type: application/xml' \
+--data '<?xml version='\''1.0'\'' encoding='\''UTF-8'\''?>
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+    <S:Body>
+        <ns2:create xmlns:ns2="http://services.kevinpina.com/">
+            <arg0>
+                <name>ReacNative</name>
+            </arg0>
+        </ns2:create>
+    </S:Body>
+</S:Envelope>'
 ```
 
 # DEBUG REMOTELY TOMCAT

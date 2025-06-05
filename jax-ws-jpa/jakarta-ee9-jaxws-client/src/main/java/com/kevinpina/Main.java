@@ -21,8 +21,9 @@ public class Main {
 
         Course course = new Course();
         course.setName("Microsoft");
+        course.setDescription("To be defined");
         Course courCreated = courseServiceWS.create(course);
-        System.out.println(courCreated.getName());
+        System.out.println("ID: " + courCreated.getId() + ", Name: " +courCreated.getName());
 
         courseServiceWS.list().forEach(c -> System.out.println(c.getName()));
     }
